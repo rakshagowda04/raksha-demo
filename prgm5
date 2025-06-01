@@ -1,0 +1,37 @@
+2. Installing Jenkins
+Jenkins can be installed using multiple methods:
+1️⃣ Windows Installer (.msi) – Recommended for Windows
+2️⃣ Linux Package Manager – Best for Linux Users
+3️⃣ Jenkins WAR File – Universal method using Java
+We’ll cover all three approaches.
+🟢 2.1 Prerequisites
+🔹 Java 11 or 17 is required for Jenkins.
+Check Java version:
+If Java is not installed, download it from:
+Download the Latest Java LTS Free
+java -version
+
+2.3 Installing Jenkins on Linux (Ubuntu/Debian)
+Step 1: Add Jenkins Repository
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+2 sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ >
+/etc/apt/sources.list.d/jenkins.list'
+Step 2: Install Jenkins
+sudo apt update
+sudo apt install jenkins -y
+Step 3: Start Jenkins
+sudo systemctl start jenkins
+Step 4: Access Jenkins sudo systemctl enable jenkins
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+http://localhost:8080
+2.4 Installing Jenkins Using WAR File (Works on Any OS)
+This method allows you to run Jenkins without installing it as a service.
+✅ Step 1: Download the Jenkins WAR File
+🔗 Download from: Download and deploy
+Choose Generic Java Package (.war).
+Step 2: Run Jenkins Using Java
+java -jar jenkins.war --httpPort=8080
+2
+1 http://localhost:8080
+2
+
