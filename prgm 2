@@ -1,0 +1,241 @@
+<dependencies>
+ <dependency>
+ <groupId>org.seleniumhq.selenium</groupId>
+ <artifactId>selenium-java</artifactId>
+ <version>3.141.59</version>
+ </dependency>
+ <dependency>
+ <groupId>org.testng</groupId>
+ <artifactId>testng</artifactId>
+ <version>7.4.0</version>
+ <scope>test</scope>
+ </dependency>
+ </dependencies>
+ INDEX.HTML
+ <!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>My Simple Website</title>
+ <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+ <header>
+ <img src="logo.png" alt="Logo">
+ </header>
+ <h1>Welcome to My Simple Website</h1>
+ </body>
+ </html>
+ STYLE.CSS
+ body {
+ font-family: Arial, sans-serif;
+ background-color: #f4f4f4;
+ text-align: center;
+ }
+header img {
+ width: 100px;
+ }
+git init
+
+ git add .
+ git commit -m "Initial commit"
+
+ git remote add origin <your-repository-url>
+ git push -u origin master
+
+ Steps to Deploy to GitHub Pages Using /docs Folder
+ <build>
+ <plugins>
+ <plugin>
+ <groupId>org.apache.maven.plugins</groupId>
+ <artifactId>maven-resources-plugin</artifactId>
+ <version>3.2.0</version>
+ <executions>
+ <execution>
+ <phase>prepare-package</phase> <!-- Before packaging -->
+ <goals>
+ <goal>copy-resources</goal>
+ </goals>
+<configuration>
+ <outputDirectory>${project.basedir}/docs</outputDirectory> <!-- Deploy to
+/docs folder -->
+ <resources>
+ <resource>
+ <directory>src/main/resources</directory>
+ <includes>
+ <include>**/*</include> <!-- Copy all files in
+src/main/resources -->
+ </includes>
+ </resource>
+ </resources>
+ </configuration>
+ </execution>
+ </executions>
+ </plugin>
+ </plugins>
+ </build>
+
+1 mvn clean install
+
+
+ git add docs/*
+ git commit -m "Deploy site to GitHub Pages"
+ git push origin master # Or the branch you are using, maybe 'main' in some cases
+ Enable GitHub Pages
+ Go to your GitHub repository.
+Navigate to Settings > Pages (on the left sidebar).
+Under the Source section, select the main branch and /docs folder as the source.
+Click Save.
+https://<your-github-username>.github.io/<your-repository-name>
+Prepare Your Maven Project
+Open your pom.xml file and configure the maven-resources-plugin to copy your static files (like index.html ,
+style.css , etc.) into the /docs folder:
+<build>
+2 <plugins>
+3 <plugin>
+4 <groupId>org.apache.maven.plugins</groupId>
+5 <artifactId>maven-resources-plugin</artifactId>
+6 <version>3.2.0</version>
+7 <executions>
+8 <execution>
+9 <phase>prepare-package</phase>
+10 <goals>
+11 <goal>copy-resources</goal>
+12 </goals>
+13 <configuration>
+14 <outputDirectory>${project.basedir}/docs</outputDirectory>
+15 <resources>
+16 <resource>
+17 <directory>src/main/resources</directory>
+18 <includes>
+19 <include>**/*</include>
+20 </includes>
+21 </resource>
+</resources>
+23 </configuration>
+24 </execution>
+25 </executions>
+26 </plugin>
+27 </plugins>
+28 </build>
+Build the Project
+mvn clean install
+Push Changes to GitHub
+git add docs/*
+2 git commit -m "Deploy site to GitHub Pages"
+3
+1 git push origin master
+2Enable GitHub Pages
+Go to your GitHub repository.
+Navigate to Settings > Pages (in the sidebar).
+Under the Source section, select:
+Branch: main
+Folder: /docs
+Click Save.
+5. Access Your Website
+https://<your-github-username>.github.io/<your-repository-name>/
+Write a Simple Selenium Test with TestNG:
+Create a new Java class WebPageTest.java in the src/test/java directory.
+package org.test;
+2
+3 import org.openqa.selenium.WebDriver;
+4 import org.openqa.selenium.chrome.ChromeDriver;
+5 import org.testng.Assert;
+6 import org.testng.annotations.AfterTest;
+7 import org.testng.annotations.BeforeTest;
+8 import org.testng.annotations.Test;
+9
+10 import static org.testng.Assert.assertTrue;
+11
+12 public class WebpageTest {
+13 private static WebDriver driver;
+14
+15 @BeforeTest
+16 public void openBrowser() throws InterruptedException {
+17 driver = new ChromeDriver();
+18 driver.manage().window().maximize();
+19 Thread.sleep(2000);
+20 driver.get("https://sauravsarkar-codersarcade.github.io/CA-MVN/"); // "Note: You should
+use your GITHUB-URL here...!!!"
+21 }
+22
+23 @Test
+24 public void titleValidationTest(){
+25 String actualTitle = driver.getTitle();
+26 String expectedTitle = "Tripillar Solutions";
+27 Assert.assertEquals(actualTitle, expectedTitle);
+28 assertTrue(true, "Title should contain 'Tripillar'");
+29 }
+30
+31 @AfterTest
+32 public void closeBrowser() throws InterruptedException {
+33 Thread.sleep(1000);
+34 driver.quit();
+35 }
+36 }
+37
+38Set Up Selenium and TestNG Dependencies
+In your Maven project, add the necessary dependencies for Selenium WebDriver and TestNG to the pom.xml file: (
+Skip if already added..!!)
+Selenium WebDriver: This is used for browser automation.
+TestNG: This is a testing framework used to run Selenium tests.
+2<dependencies>
+2 <!-- Selenium WebDriver dependency -->
+3 <dependency>
+4 <groupId>org.seleniumhq.selenium</groupId>
+5 <artifactId>selenium-java</artifactId>
+6 <version>4.8.0</version> <!-- Ensure this is the latest version -->
+7 </dependency>
+8
+9 <!-- TestNG dependency -->
+10 <dependency>
+11 <groupId>org.testng</groupId>
+12 <artifactId>testng</artifactId>
+13 <version>7.7.0</version> <!-- Ensure this is the latest version -->
+14 <scope>test</scope>
+15 </dependency>
+16 </dependencies>
+Create Selenium Test Class Using TestNG
+package org.test;
+2
+3 import org.openqa.selenium.WebDriver;
+4 import org.openqa.selenium.chrome.ChromeDriver;
+5 import org.testng.Assert;
+6 import org.testng.annotations.AfterTest;
+7 import org.testng.annotations.BeforeTest;
+8 import org.testng.annotations.Test;
+9
+10 import static org.testng.Assert.assertTrue;
+11
+12 public class WebpageTest {
+13 private static WebDriver driver;
+14
+15 @BeforeTest
+16 public void openBrowser() throws InterruptedException {
+17 driver = new ChromeDriver();
+18 driver.manage().window().maximize();
+19 Thread.sleep(2000);
+20 driver.get("https://sauravsarkar-codersarcade.github.io/CA-MVN/"); // "Note: You should use
+your GITHUB-URL here...!!!"
+21 }
+22
+23 @Test
+24 public void titleValidationTesttitleValidationTest(){
+25 String actualTitle = driver.getTitle();
+String expectedTitle = "Tripillar Solutions"; // "Replace with Your HTML WebPage Title"
+27 Assert.assertEquals(actualTitle, expectedTitle);
+28 }
+29
+30 @AfterTest
+31 public void closeBrowser() throws InterruptedException {
+32 Thread.sleep(1000);
+33 driver.quit();
+34 }
+35
+36 }
+
+mvn test
+Next, create a test class in your src/test/java directory. You can name it WebsiteTitleTest.java .
+
+ 
