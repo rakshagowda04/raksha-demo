@@ -1,0 +1,56 @@
+1. Configuring Jenkins & Git Integration
+Step 1: Verify Git Installation in Jenkins
+1. Open Jenkins Dashboard → Manage Jenkins → Global Tool Configuration.
+2. Under Git, verify the installation path (e.g., C:\Program Files\Git\bin\git.exe ).
+3. Click Save.
+
+Step 2: Add GitHub Credentials in Jenkins
+1. Navigate to Manage Jenkins → Manage Credentials.
+2. Select Global credentials (unrestricted) → Click Add Credentials.
+3. Choose Username with password or SSH Key, provide details, and click OK.
+
+Running a Selenium Java Test from a Local Maven Project
+Step 1: Create a New Jenkins Job
+1. Go to Jenkins Dashboard → Click New Item.
+Enter a project name → Select Freestyle Project.
+3. Click OK.
+Step 2: Configure the Build Step
+1. Scroll to Build → Click Add build step → Execute Windows Batch Command.
+2. Enter the following commands (ensure correct navigation to project directory):
+3. Click Save → Click Build Now to execute the test.
+3. Running Selenium Tests from a GitHub Repository via Jenkins
+Step 1: Set Up a New Jenkins Job for GitHub Project
+1. Go to Jenkins Dashboard → Click New Item.
+2. Enter a project name → Select Freestyle Project.
+3. Click OK.
+Step 2: Configure Git Repository in Jenkins
+1. Under Source Code Management, select Git.
+2. Enter your GitHub repository URL (e.g., https://github.com/your-repo-name.git ).
+3. Select the Git credentials configured earlier.
+Step 3: Add Build Step for Maven
+1. Scroll to Build → Click Add build step → Execute Windows Batch Command.
+2. Enter the Maven test command:
+3. Click Save.
+Step 4: Trigger the Build
+1. Click Build Now to fetch the code from GitHub and execute the Selenium tests.
+2. Check the Console Output to verify test execution.
+cd D:\Idea Projects\MVNGRDLDEMO
+2 mvn test
+
+
+3. Running Selenium Tests from a GitHub Repository via Jenkins
+Step 1: Set Up a New Jenkins Job for GitHub Project
+1. Go to Jenkins Dashboard → Click New Item.
+2. Enter a project name → Select Freestyle Project.
+3. Click OK.
+Step 2: Configure Git Repository in Jenkins
+1. Under Source Code Management, select Git.
+2. Enter your GitHub repository URL (e.g., https://github.com/your-repo-name.git ).
+3. Select the Git credentials configured earlier
+Step 3: Add Build Step for Maven
+1. Scroll to Build → Click Add build step → Execute Windows Batch Command.
+2. Enter the Maven test command:
+1 mvn test
+Step 4: Trigger the Build
+1. Click Build Now to fetch the code from GitHub and execute the Selenium tests.
+2. Check the Console Output to verify test execution.
